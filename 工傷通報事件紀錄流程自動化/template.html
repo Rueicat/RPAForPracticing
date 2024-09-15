@@ -1,0 +1,226 @@
+<!--
+1.寄出信件版面的樣子參照連結:
+  (等於自己畫表格...可以自己把表格製作好(using word or excel, etc...), 貼到網路生成html的服務網頁, 得到code後再自行修改)
+  url:...
+2.記得將欄位內容修改成自己要的文字
+3.有些格子內容是利用main_code.gs中定義的變數抓取的資料(抓spreadsheet表格的資料)
+    <span><?= 變數 ?></span>
+  記得都要修改成自己的
+4.給使用者回填的線上通報單是用google表單製作後, 嵌入連結
+5.表單回覆後, 我有寫另一個接收表單後會自動:
+    - 寄信給負責人及相關人員回覆表單報告+受傷照片(如果有回傳的話) 做留存
+    - 雖然google 表單回覆有自己的spreadsheet, 但我程式中還是有擷取想要的資料自己算一個sheet append data 上去, 比較好查閱
+6.以下有標註哪一個row 的資料(原始表格我是用spreadsheet 生成)
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <p><google-sheets-html-origin></google-sheets-html-origin></p>
+    <table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" data-sheets-root="1" style="table-layout: fixed; font-size: 12pt; font-family: Calibri; width: 0px; border-collapse: collapse; border: none;">
+    
+    <colgroup>
+    <col width="91">
+    <col width="82">
+    <col width="51">
+    <col width="31">
+    <col width="88">
+    <col width="44">
+    <col width="100">
+    <col width="51">
+    <col width="36">
+    </colgroup>
+    
+    <tbody>
+      <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+        
+        <!-- row 1 data -->
+
+      <td rowspan="1" colspan="6" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;致各位主管好：&quot;}" style="border: 2px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 229, 153); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">
+      致各位主管好：
+      </td>
+      
+      <td rowspan="1" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;如未完成通報請點我&quot;}" style="border-width: 2px 2px 2px 1px; border-style: solid; border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 229, 153); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">
+      如未完成通報請點我
+      </td>
+      </tr>
+      
+      <!-- row 2 to rwo 5, 左側 -->
+
+      <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+        
+      <td rowspan="4" colspan="6" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;安全衛生小組收到人員受傷相關通報\n需請各位主管協助完成「XX公司線上通報單」\n(配合法規需由受傷人員之上一層主管協助完成表單)&quot;}" data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:50,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680},&quot;5&quot;:1}}{&quot;1&quot;:55}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-weight: normal;">
+        
+        <span>
+          <div style="max-height: 80px;">
+        <span style="font-size: 12pt; font-family: &quot;Microsoft JhengHei&quot;; font-weight: normal; font-style: normal;">安全衛生小組收到人員受傷相關通報
+        <br>需請各位主管協助完成「XX公司的線上通報單」<br>(配合法規需由受傷人員之</span><span style="font-size: 12pt; font-family: &quot;Microsoft JhengHei&quot;; font-weight: bold; font-style: normal; color: rgb(255, 0, 0);">上一層主管</span>
+        <span style="font-size: 12pt; font-family: &quot;Microsoft JhengHei&quot;; font-weight: normal; font-style: normal;">協助完成表單)</span>
+        </div>
+        </span>
+        </td>
+
+       <!-- row 2 to rwo 5, 右側超連結部分 -->
+
+      <td rowspan="4" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot; MOS線上通報單&quot;}" data-sheets-hyperlink="https://forms.gle/tiABnMm92Exv5X9K7" style="border-width: 1px 2px 2px 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 18pt; font-weight: bold; text-decoration: underline; color: rgb(0, 0, 255); text-align: center;">
+      
+        <span>
+        <div style="max-height: 80px;">
+        
+        <a class="in-cell-link" href="https://forms.gle/yourGoogleFormLink" target="_blank">XX公司的線上通報單</a>
+        </div>
+        
+        </span></td></tr><tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+          
+          </tr>
+          
+          <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+          
+          </tr>
+          
+          <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+            
+          </tr>
+          
+          <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+            
+          <!-- row6-row7-->
+
+
+          <td rowspan="1" colspan="9" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;夥伴資訊&quot;}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(147, 196, 125); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+          夥伴資訊
+          </td>
+          </tr>
+          
+          <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+            
+          <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;單位部門&quot;}" style="border-width: 1px 1px 2px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+            單位部門
+            </td>
+
+          <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;單位代號&quot;}" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+            單位代號
+            </td>
+            
+            <td rowspan="1" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;單位名稱&quot;}" style="border-width: 1px 1px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">
+              單位名稱
+              </td>
+              
+              <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;職別&quot;}" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+                職別</td>
+                
+                <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;員工編號&quot;}" style="border-width: 1px 1px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+                  員工編號</td>
+                  
+      <td rowspan="1" colspan="2" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;員工姓名&quot;}" style="border-width: 1px 2px 2px 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(217, 234, 211); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">
+        員工姓名</td>
+        
+</tr>
+
+<!-- 員工資料部分-->
+
+
+<tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+  
+  <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;營四部&quot;}" data-sheets-formula="=INDEX(R1C11:R500C11, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 1px 2px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    <span><div style="max-height: 80px;"><span><?= 部課 ?></span></div></span></td>
+    
+  <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;B054&quot;}" data-sheets-formula="=INDEX(R1C9:R500C9, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    <span><div style="max-height: 80px;"><span><?= 店鋪代號 ?></span></div></span></td>
+  
+  <td rowspan="4" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;新竹清華店&quot;}" data-sheets-formula="=INDEX(R1C10:R500C10, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    <span><div style="max-height: 80px;"><span><?= 單位名稱 ?></span></div></span></td>
+    
+  <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;FT&quot;}" data-sheets-formula="=INDEX(R1C12:R500C12, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    <span><div style="max-height: 80px;"><span><?= 職別 ?></span></div></span></td>
+    
+  <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:9511200}" data-sheets-formula="=R[-17]C[-6]" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    <span><div style="max-height: 80px;"><span><?= 員工編號 ?></span></div></span></td>
+    
+<td rowspan="4" colspan="2" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;范芫銘&quot;}" data-sheets-formula="=INDEX(R1C6:R500C6, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 2px 2px 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+  <span><div style="max-height: 80px;"><span><?= 員工姓名 ?></span></div></span></td></tr>
+  
+  <!-- 事件資訊-->
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+    
+  <td rowspan="1" colspan="9" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;事件資訊&quot;}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(111, 168, 220); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">事件資訊</td></tr>
+  
+  
+  <!--通報日期那行-->
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+    
+  <td rowspan="1" colspan="2" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;通報日期&quot;}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(207, 226, 243); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">通報日期</td>
+  
+  <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;發生日期&quot;}" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(207, 226, 243); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">發生日期</td>
+  
+  <td rowspan="1" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;事件類型&quot;}" style="border-width: 1px 2px 2px 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(207, 226, 243); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; text-align: center;">事件類型</td></tr>
+  
+  <!--事件自動帶入部分-->
+  
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+    
+  <td rowspan="2" colspan="2" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:45327}" data-sheets-numberformat="{&quot;1&quot;:5,&quot;2&quot;:&quot;yyyy/M/d&quot;,&quot;3&quot;:1}" data-sheets-formula="=INDEX(R1C2:R500C2, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+  
+  <span><div style="max-height: 40px;"><span><?= 通報日期 ?></span></div></span></td>
+  
+  <td rowspan="2" colspan="4" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:45327}" data-sheets-numberformat="{&quot;1&quot;:5,&quot;2&quot;:&quot;yyyy/M/d&quot;,&quot;3&quot;:1}" data-sheets-formula="=INDEX(R1C3:R500C3, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 1px 2px; border-style: solid dotted solid solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+  
+  <span><div style="max-height: 40px;"><span><?= 發生日期 ?></span></div></span></td>
+  
+  <td rowspan="2" colspan="3" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;職災砸傷&quot;}" data-sheets-formula="=INDEX(R1C8:R500C8, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 2px 2px 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: normal; text-align: center;">
+    
+    <span><div style="max-height: 40px;"><span><?= 通報類型 ?></span></div></span></td></tr>
+    
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+  
+  <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+    
+    <td rowspan="1" colspan="9" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;事件經過(-主管回報-)&quot;}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(207, 226, 243); font-family: &quot;Microsoft JhengHei&quot;; font-size: 13pt; font-weight: bold; color: rgb(34, 34, 34); text-align: center;">事件經過(-主管回報-)</td></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+      
+    <td rowspan="9" colspan="9" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;主管回報：\n員工9511200范芫銘2/5約11:00\n開大冷凍冰箱，大冷凍的上門軸老舊斷裂，導致門砸到頭，造成2-3公分傷口，目前先至馬偕醫院就醫，之後狀況再回報&quot;}" data-sheets-formula="=&quot;主管回報：&quot;&amp;char(10)&amp;INDEX(R1C16:R500C16, MATCH(R30C4, R1C5:R500C5, 0))" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: &quot;Microsoft JhengHei&quot;; font-weight: normal; white-space: normal; overflow-wrap: break-word;">
+    
+    <span><div style="max-height: 180px;"><span><?= 通報內容 ?></span></div></span></td></tr>
+    
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;"></tr>
+    
+    <tr style="color: rgb(0, 0, 0); font-family: Calibri; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; height: 20px;">
+      
+      <td rowspan="2" colspan="9" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;謝謝各位主管們的協助\n安衛小組將視情形持續追蹤，如有需協助事項歡迎與我們聯繫。&quot;}" style="border-width: 1px 2px 2px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(217, 210, 233); font-family: &quot;Microsoft JhengHei&quot;; font-size: 11pt; font-weight: bold; white-space: normal; overflow-wrap: break-word; text-align: center;">
+        
+        <span><div style="max-height: 40px;">謝謝各位主管們的協助<br>安衛小組將視情形持續追蹤，如有需協助事項歡迎與我們聯繫。</div></span></td></tr>
+        
+        </tbody>
+        
+        </table>
+  </body>
+</html>
