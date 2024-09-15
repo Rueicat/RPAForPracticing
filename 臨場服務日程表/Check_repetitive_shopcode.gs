@@ -1,4 +1,6 @@
-
+/*
+1.spreadsheet前端表格有設計排班, 但因為很多, 比對有無重複安排很花時間, 所以寫程式自動判定
+*/
 
 function check() {
   const confirm = Browser.msgBox('確認訊息, 是抓取V欄位判定, 確認跑程式?', Browser.Buttons.OK_CANCEL);
