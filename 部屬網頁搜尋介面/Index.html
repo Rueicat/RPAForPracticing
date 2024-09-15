@@ -1,0 +1,94 @@
+<!--
+資安考量部分:
+1.用部屬的方式, api 連結試算表, 只回傳限制的訊息
+2.搜尋前有密碼保護, 正確才能搜尋(通常會給對方主要操作者知道)
+3.對方只要有搜尋, 搜尋相關資訊會保存在我方表單中備查, 避免有異常查詢狀況.
+  每次程式被啟動搜尋會記錄:
+   - 對方查詢資料, 與查詢結果
+   - 對方查詢日期時間
+   -對方查詢的IP位置, 及大概區域位置, 如 Taipei, Taiwan
+4.UI介面太簡陋, 可以再提升
+5.響應時間我覺得太慢, 雖然目前這樣業務執行狀況對方很滿意, 但可用其他方式加快反應時間
+6.好像有的android手機開啟這部屬的頁面會無法開啟或錯誤, 待解決. 
+7.特殊操作排除沒有特別寫入程式中, 例如短時間按很多次送出, 或輸入奇怪符號等, 待修正.
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body {
+      font-size: 16px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label, input, button {
+      font-size: 16px;
+    }
+    #progress-message, #result {
+      font-size: 16px;
+    }
+    #notice {
+      font-size: 16px;
+      color: red;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="notice">
+    如果使用Google chrome搜尋時間超過10秒, 請改用微軟的Edge瀏覽器, 或使用手機查詢
+  </div>
+
+  <form id="password-form">
+    <label for="password">密碼:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">驗證</button>
+  </form>
+  
+  <form id="search-form" style="display:none;">
+    <label for="id-number">身分證號:</label>
+    <input type="text" id="id-number" name="id-number" required>
+    <button type="submit">搜尋</button>
+  </form>
+  <div id="progress-message" style="display: none;">搜尋中...</div>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('password-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var password = document.getElementById('password').value;
+      if (password === '123456789') {
+        document.getElementById('password-form').style.display = 'none';
+        document.getElementById('search-form').style.display = 'block';
+      } else {
+        alert('密碼錯誤，請重試');
+      }
+    });
+
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('progress-message').style.display = 'block';
+      var idNumber = document.getElementById('id-number').value;
+      google.script.run.withSuccessHandler(displayResult).searchId(idNumber);
+    });
+
+    function displayResult(result) {
+      document.getElementById('progress-message').style.display = 'none';
+      var resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';
+      if (result) {
+        resultDiv.innerHTML = `<p>姓名: ${result.name}</p>
+                               <p>體檢單位: ${result.clinic}</p>
+                               <p>體檢日期: ${result.date || '沒有做今年度體檢'}</p>`;
+      } else {
+        resultDiv.innerHTML = '<p>沒有找到相關資料</p>';
+      }
+    }
+  </script>
+</body>
+</html>
