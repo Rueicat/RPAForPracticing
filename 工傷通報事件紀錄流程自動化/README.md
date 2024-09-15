@@ -8,13 +8,13 @@
 ## UI介面設計
 * 使用內建程式庫, 直接在spreadsheet 上方選單增加客製化選項, 如下圖所示:
 
-![custom_list](工傷通報事件紀錄流程自動化/custom_list.png)
+![custom_list](./工傷通報事件紀錄流程自動化/custom_list.png)
 
 * 信件自動表單如下所示:
 
   內容都是自動從spreadsheet抓取, 詳見`Main code.gs` 內容
 
-![form_preview](工傷通報事件紀錄流程自動化/form_preview.png)
+![form_preview](./工傷通報事件紀錄流程自動化/form_preview.png)
 
 * 簽名檔設計是基本的html語法
 
@@ -28,5 +28,5 @@
   * google spreadsheet 的下拉選單
   * 內建的checkbox功能(可以判斷true or false)
 
-![spreadsheetForm_exammple](工傷通報事件紀錄流程自動化/spreadsheetForm_example.png)
+![spreadsheetForm_exammple](./工傷通報事件紀錄流程自動化/spreadsheetForm_example.png)
 
